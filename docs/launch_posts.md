@@ -1,6 +1,6 @@
 # Launch post drafts
 
-Post only after the GitHub repo is public. Replace `<repo link>` before posting. Post one at a time, and wait a few days between them.
+Post only after the GitHub repo is public. Post one at a time, and wait a few days between them.
 
 ---
 
@@ -23,7 +23,7 @@ So I packaged the rules as `simdiff-check`. It reads a MuJoCo model, or records 
 
 I tested it on 8,000 new random scenes. None of the scenes that passed every rule were off by more than 1%, and every scene that was off by more than 1% got flagged. The limits: I've only validated it on sliding contact and simple articulated systems so far. Impacts, grasping and rolling aren't covered yet.
 
-<repo link>
+https://github.com/bluvtx09/simdiff-check
 
 What I'd love to hear:
 1. Which sim setting has silently burned you? I want to test more of them.
@@ -46,6 +46,6 @@ I measured all of these against analytic answers, about 180k runs in total, and 
 
 One finding matters for anyone comparing engines. The dt/2 check measures numerical error, but it can't see setting mistakes. With a default floor friction, the true error was 30x the estimate. That's why the linter and the self-check are separate tools.
 
-<repo link>
+https://github.com/bluvtx09/simdiff-check
 
 Question for the thread: has anyone checked whether a policy's sim-to-real gap shrinks after fixing defaults like these? I'd like to know if it matters as much for learned policies as it does for raw physics.

@@ -150,7 +150,7 @@ All numbers above are reproducible from [`validation/`](validation/):
 | `v3_selfcheck.py` | Does dt vs dt/2 estimate the error, and does the observed-order check tell when it doesn't? | see figure above; tolerance 0.5 was fixed before looking at the data |
 
 ```bash
-python validation/v1_rules_on_simdiff_data.py   # needs the SimDiff results folder (SIMDIFF_ROOT)
+python validation/v1_rules_on_simdiff_data.py   # needs the SimDiff repo: git clone https://github.com/bluvtx09/simdiff ../simdiff
 python validation/v2_end_to_end.py 4000 4000    # ~6 min on 2 cores
 python validation/v3_selfcheck.py
 python validation/figures.py
@@ -174,7 +174,7 @@ python validation/figures.py
 The rules come from SimDiff, a reproducibility audit of MuJoCo and PyBullet. It combined analytic
 reference solutions, Sobol sensitivity analysis, three rounds of fuzzing to find where rules break and then
 repairing them, and a comparison of cross-engine and self-disagreement as error signals.
-The preprint is in preparation, and section numbers in the rule evidence refer to it.
+Code and data: [bluvtx09/simdiff](https://github.com/bluvtx09/simdiff). The preprint is in preparation, and section numbers in the rule evidence refer to it.
 
 ## License
 
