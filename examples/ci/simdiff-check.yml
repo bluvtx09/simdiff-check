@@ -1,0 +1,18 @@
+# Copy to .github/workflows/simdiff-check.yml in your repository.
+name: simdiff-check
+on: [push, pull_request]
+jobs:
+  lint-sim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: pip install "simdiff-check[all]"
+      # MuJoCo models: fail the build on any error (add --strict to fail on warnings too)
+      - run: |
+          for f in models/*.xml; do
+            simdiff-check mujoco "$f" --event-time 0.3 || exit 1
+          done
+      # PyBullet: run a short scene-building script under the recorder
+      # - run: simdiff-check pybullet scripts/build_scene.py --event-time 0.3

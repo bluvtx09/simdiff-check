@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simdiff-check"
+version = "0.1.0"
+description = "Lint MuJoCo/PyBullet simulation settings against measured failure rules, and estimate numerical error without ground truth"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+dependencies = ["numpy"]
+
+[project.optional-dependencies]
+mujoco = ["mujoco>=3.0"]
+pybullet = ["pybullet>=3.2"]
+all = ["mujoco>=3.0", "pybullet>=3.2"]
+test = ["pytest", "mujoco>=3.0", "pybullet>=3.2"]
+
+[project.scripts]
+simdiff-check = "simdiff_check.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
